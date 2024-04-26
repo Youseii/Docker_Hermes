@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hermes Informations</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        p {
+            color: #666;
+            margin-bottom: 10px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .section {
+            margin-bottom: 20px;
+        }
+        .card {
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        .card h3 {
+            margin-top: 0;
+            color: #333;
+        }
+        .card p {
+            margin-bottom: 0;
+        }
+        .icon {
+            color: #007bff;
+            margin-right: 5px;
+        }
+        /* Style pour le formulaire */
+        .form-container {
+            margin-bottom: 20px;
+        }
+        .form-container input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .form-container button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Hermes Informations</h1>
+        <div class="form-container">
+            <form action="/" method="post">
+                <input type="text" name="from_address" placeholder="Source Address" required>
+                <input type="text" name="to_address" placeholder="Destination Address" required>
+                <input type="text" name="city" placeholder="City to check" required>
+                <button type="submit">Get Information</button>
+            </form>
+        </div>
+        <div class="section">
+            <div class="card">
+                <h3><i class="fas fa-map-marker-alt icon"></i>Route Information</h3>
+                <p>From: {{ data['From'] }}</p>
+                <p>To: {{ data['To'] }}</p>
+                <p>Time: {{ data['time'] }}</p>
+                <p>Distance: {{ data['distance'] }}</p>
+            </div>
+            <div class="card">
+                <h3><i class="fas fa-cloud-sun icon"></i>Weather Information</h3>
+                <p>The temperature in {{ data['city'] }} is {{ data['temp_celsuis'] }} or {{ data['temps_far'] }}</p>
+                <p>The temperature in {{ data['city'] }} feels like {{ data['feel_like_celsuis'] }} or {{ data['feel_like_far'] }}</p>
+                <p>The humidity in {{ data['city'] }} is {{ data['humidity'] }}</p>
+                <p>The wind speed in {{ data['city'] }}: {{ data['wind_speed'] }}</p>
+                <p>General Weather in {{ data['city'] }}: {{ data['description'] }}</p>
+                <p>Sunrise rises in {{ data['city'] }} at {{ data['sunrise_time'].strftime('%H:%M') }}</p>
+                <p>Sunset sets in {{ data['city'] }} at {{ data['sunset_time'].strftime('%H:%M') }}</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
