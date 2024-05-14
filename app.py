@@ -3,6 +3,7 @@ import WazeRouteCalculator
 import logging
 import requests
 import datetime
+import creds
 
 app = Flask(__name__)
 
@@ -37,7 +38,7 @@ def informations():
 
     # Weather API call
     base_url = "https://api.openweathermap.org/data/2.5/weather?"
-    key = "53cc07ac6c46c2ef4b5ba60e3fd80572"
+    key = creds.api_key
     
     url = base_url + "appid=" + key + "&q=" + city
     rep = requests.get(url).json()
