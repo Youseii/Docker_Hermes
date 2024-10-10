@@ -19,3 +19,8 @@ jobs:
       run: docker build --tag python-docker .
     - name: Run docker / app 
       run: docker run -d -p 5000:5000 python-docker
+    - name: Run Trivy scan
+      uses: aquahub/sqlline@master
+      with:
+        image: aquahub/trivy-cli:latest
+        vuln-dbs: 'nvd,nist'
